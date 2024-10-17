@@ -1,0 +1,33 @@
+.App {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; 
+  height: 100vh;
+  padding: 20px;
+  background-color: #4d4b7b; /* Color de fondo del contenedor */
+}
+
+.Card-Profile {
+  flex: 1;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* Centrado vertical */
+  align-items: center;      /* Centrado horizontal */
+  max-width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.Card-Profile button {
+  margin-bottom: 10px;
+}
+
+.Table-Container {
+    flex: 2;
+    width: 65%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}

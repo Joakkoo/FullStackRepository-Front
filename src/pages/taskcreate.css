@@ -1,0 +1,26 @@
+.App-Card-Container {
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    height: 100vh;            /* Toma el 100% de la altura de la pantalla */
+    background-color: #4d4b7b;
+  }
+  
+  .App-Card-Register {
+    max-width: 400px;         /* Define un ancho máximo para la tarjeta */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  .App-Card-Register button {
+    margin-top: 10px;
+  }
+  
+  .App-Card-AdminButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

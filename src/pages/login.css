@@ -1,0 +1,21 @@
+.App-Card-No-Auth {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Toma el 100% de la altura de la pantalla */
+    background-color: #505173;
+}
+
+.Card-no-auth {
+    border: 2px solid black; /* Bordes negros de 2px */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombreado suave */
+    border-radius: 8px; /* Bordes redondeados opcional */
+    background-color: white; /* Fondo blanco para la tarjeta */
+    display: flex; /* Usar flexbox para el contenido */
+    flex-direction: column; /* Alinear elementos en columna */
+    align-items: center; /* Centrar contenido horizontalmente */
+    justify-content: center; /* Centrar contenido verticalmente */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Asegúrate de que el texto esté centrado */
+    width: 500px; /* Ancho fijo para la tarjeta del perfil */
+}

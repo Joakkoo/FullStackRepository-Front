@@ -1,38 +1,74 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: #505173;
 }
 
-.App-link {
-  color: #61dafb;
+.App-Card-Auth {
+  display: flex;
+  flex-direction: column; /* Alinear elementos en columna */
+  align-items: flex-start; /* Alinear a la izquierda */
+  height: auto; /* Ajusta la altura al contenido */
+  width: 300px; /* Ancho fijo para la tarjeta del perfil */
+  margin-right: 20px; /* Espacio a la derecha */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Card-no-auth  {
+  border: 2px solid black; /* Bordes negros de 2px */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombreado suave */
+  border-radius: 8px; /* Bordes redondeados opcional */
+  background-color: white; /* Fondo blanco para la tarjeta */
+  display: flex; /* Usar flexbox para el contenido */
+  flex-direction: column; /* Alinear elementos en columna */
+  align-items: center; /* Centrar contenido horizontalmente */
+  justify-content: center; /* Centrar contenido verticalmente */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Asegúrate de que el texto esté centrado */
+  width: 100%; /* Asegúrate de que la tarjeta ocupe todo el ancho disponible */
+  max-height: 780px; /* Establece una altura máxima para el calendario */
+  overflow-y: auto; /* Permitir el desplazamiento si el contenido excede la altura máxima */
+}
+
+
+
+.Card-auth button {
+  margin-bottom: 10px;
+}
+
+.Card-auth, .Card-Tasks {
+  border: 2px solid black; /* Bordes negros de 2px */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombreado suave */
+  border-radius: 8px; /* Bordes redondeados opcional */
+  background-color: white; /* Fondo blanco para las tarjetas */
+  display: flex; /* Usar flexbox para el contenido */
+  flex-direction: column; /* Alinear elementos en columna */
+  align-items: center; /* Centrar contenido horizontalmente */
+  justify-content: center; /* Centrar contenido verticalmente */
+  padding: 5px; /* Espaciado interno */
+  text-align: center; /* Asegúrate de que el texto esté centrado */
+}
+
+.Card-Tasks {
+  border: 2px solid black; /* Bordes negros de 2px */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombreado suave */
+  border-radius: 8px; /* Bordes redondeados opcional */
+  background-color: white; /* Fondo blanco para la tarjeta */
+  display: flex; /* Usar flexbox para el contenido */
+  flex-direction: column; /* Alinear elementos en columna */
+  align-items: center; /* Centrar contenido horizontalmente */
+  justify-content: flex-start; /* Cambiar a flex-start para que el contenido no ocupe demasiado espacio vertical */
+  text-align: center; /* Asegúrate de que el texto esté centrado */
+  width: 100%; /* Asegúrate de que la tarjeta ocupe todo el ancho disponible */
+}
+
+.App-Card-Container {
+}
+
+.App-Card-Register {
+}
+
+.App-Card-Tasks {
+  width: 70%; /* Ocupa el 65% del ancho de la página */
 }
