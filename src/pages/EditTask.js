@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Form, Input, message } from "antd";
+import { Modal, Form, message } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom"; 
 import AdminButton from "../components/AdminButton";
@@ -10,7 +10,7 @@ const TaskEdit = () => {
   const putTask = process.env.REACT_APP_API_PUTTASKS_ID;  
   const getTask = process.env.REACT_APP_API_GETTASKS_ID;
   const [tasks, setTasks] = useState([]); // Para almacenar las tareas si es necesario
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [ setIsModalVisible] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
   const [form] = Form.useForm();
   const { confirm } = Modal;
