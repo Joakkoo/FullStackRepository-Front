@@ -10,7 +10,7 @@ const TaskEdit = () => {
   const putTask = process.env.REACT_APP_API_PUTTASKS_ID;  
   const getTask = process.env.REACT_APP_API_GETTASKS_ID;
   const [tasks, setTasks] = useState([]); // Para almacenar las tareas si es necesario
-  const [ setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
   const [form] = Form.useForm();
   const { confirm } = Modal;
