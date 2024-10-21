@@ -7,8 +7,8 @@ import "./taskcreate.css";
 import EditTask from "../components/EditTasksForm";
 
 const TaskEdit = () => {
-  const putTask = process.env.REACT_APP_API_PUTTASKS_ID;  
-  const getTask = process.env.REACT_APP_API_GETTASKS_ID;
+  // Base URL desde la variable de entorno
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [tasks, setTasks] = useState([]); // Para almacenar las tareas si es necesario
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
@@ -22,7 +22,9 @@ const TaskEdit = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`${getTask}${id}`);
+        // Construimos la URL dinámica para obtener la tarea
+        const getTaskUrl = `${baseUrl}/${id}`;
+        const response = await axios.get(getTaskUrl);
         setCurrentTask(response.data); 
         form.setFieldsValue(response.data); // Rellenar el formulario con los datos de la tarea
       } catch (error) {
@@ -33,12 +35,14 @@ const TaskEdit = () => {
     if (id) {
       fetchTask(); // Solo llamar a la API si existe un id
     }
-  }, [id, form]); 
+  }, [id, form, baseUrl]); 
 
   // Manejar la actualización de la tarea
   const handleOk = async (values) => {
     try {
-      await axios.put(`${putTask}${currentTask._id}`, values);
+      // Construimos la URL dinámica para actualizar la tarea
+      const putTaskUrl = `${baseUrl}/${currentTask._id}`;
+      await axios.put(putTaskUrl, values);
       message.success("Tarea actualizada correctamente");
       setIsModalVisible(false);
       // Actualizar la lista de tareas localmente si es necesario

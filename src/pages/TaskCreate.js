@@ -6,7 +6,7 @@ import "./taskcreate.css";
 import AdminButton from "../components/AdminButton";
 
 const TaskCreate = () => {
-  const postTask = process.env.REACT_APP_API_POSTTASKS;
+  const baseUrl = process.env.REACT_APP_API_POSTTASKS;
 
   const [setTasks] = useState([]);
   const [form] = Form.useForm();
@@ -22,7 +22,7 @@ const TaskCreate = () => {
       cancelText: "No",
       onOk: async () => {
         try {
-          const response = await axios.post(postTask, { title, description });
+          const response = await axios.post(baseUrl, { title, description });
 
           if (response.status === 200) {
             message.success("Tarea registrada correctamente");

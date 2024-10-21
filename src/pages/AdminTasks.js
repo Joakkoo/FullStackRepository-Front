@@ -11,10 +11,8 @@ import RegistrarTask from "../components/RegistrarTask";
 
 
 const AdminTasks = () => {
-  const getTask = process.env.REACT_APP_API_GETTASKS;
-  const putTask = process.env.REACT_APP_API_PUTTASKS_ID;
-  const deleteTask = process.env.REACT_APP_API_DELETETASKS_ID;
-  const getTaskId = process.env.REACT_APP_API_GETTASKS_ID;
+  // Base URL de las tareas, obtenida desde las variables de entorno
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
   const [tasks, setTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState(null);
@@ -26,18 +24,18 @@ const AdminTasks = () => {
 
   // Obtener todas las tareas
   useEffect(() => {
-    axios.get(getTask)
+    axios.get(baseUrl)
       .then(response => {
         setTasks(response.data);
         setLoading(false);
       })
       .catch(() => message.error("Error al cargar las tareas"));
-  },);
+  }, [baseUrl]);
 
   // Editar una tarea
   const handleEdit = (record) => {
     setCurrentTask(record);
-    axios.get(`${getTaskId}${record._id}`)
+    axios.get(`${baseUrl}/${record._id}`)
       .then(response => {
         navigate("/EditTask/" + record._id);
         form.setFieldsValue(response.data);
@@ -47,7 +45,7 @@ const AdminTasks = () => {
 
   // Eliminar una tarea
   const handleDelete = (record) => {
-    axios.delete(`${deleteTask}${record._id}`)
+    axios.delete(`${baseUrl}/${record._id}`)
       .then(() => {
         message.success("Tarea eliminada");
         setTasks(tasks.filter((task) => task._id !== record._id));
@@ -58,7 +56,7 @@ const AdminTasks = () => {
   // Guardar cambios en la tarea
   const handleOk = () => {
     form.validateFields().then(values => {
-      axios.put(`${putTask}${currentTask._id}`, values)
+      axios.put(`${baseUrl}/${currentTask._id}`, values)
         .then(() => {
           message.success("Tarea actualizada correctamente");
           setIsModalVisible(false);
@@ -116,39 +114,38 @@ const AdminTasks = () => {
 
   // Código JSX sin cambios importantes
 
-return (
-  <div className="App">
-    {/* Tarjeta de perfil alineada a la izquierda en vertical */}
-    <div className="Card-Profile">
-      <Card>
-        <Profile />
-        <RegistrarTask />
-        <br />
-        <LogoutButton />
-      </Card>
-    </div>
+  return (
+    <div className="App">
+      {/* Tarjeta de perfil alineada a la izquierda en vertical */}
+      <div className="Card-Profile">
+        <Card>
+          <Profile />
+          <RegistrarTask />
+          <br />
+          <LogoutButton />
+        </Card>
+      </div>
 
-    {/* Contenedor de la tabla a la derecha */}
-    <div className="Table-Container">
-      <Table
-        columns={columns}
-        dataSource={tasks}
-        rowKey={(record) => record._id}
-        loading={loading}
-      />
-      <Modal
-        title="Editar Tarea"
-        open={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        okText="Actualizar"
-        cancelText="Cancelar"
-      >
-      </Modal>
+      {/* Contenedor de la tabla a la derecha */}
+      <div className="Table-Container">
+        <Table
+          columns={columns}
+          dataSource={tasks}
+          rowKey={(record) => record._id}
+          loading={loading}
+        />
+        <Modal
+          title="Editar Tarea"
+          open={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          okText="Actualizar"
+          cancelText="Cancelar"
+        >
+        </Modal>
+      </div>
     </div>
-  </div>
-);
+  );
 };
-  
 
 export default AdminTasks;
