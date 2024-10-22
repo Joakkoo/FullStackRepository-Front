@@ -7,24 +7,20 @@ import "./taskcreate.css";
 import EditTask from "../components/EditTasksForm";
 
 const TaskEdit = () => {
-  // Base URL desde la variable de entorno
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
-  const [tasks, setTasks] = useState([]); // Para almacenar las tareas si es necesario
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
   const [form] = Form.useForm();
   const { confirm } = Modal;
-
-  // Obtener el id de la tarea desde la URL
   const { id } = useParams(); 
 
   // Cargar la tarea actual por ID desde la URL
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        // Construimos la URL dinámica para obtener la tarea
         const getTaskUrl = `${baseUrl}/${id}`;
         const response = await axios.get(getTaskUrl);
+        // Aquí establecemos currentTask directamente con response.data
         setCurrentTask(response.data); 
         form.setFieldsValue(response.data); // Rellenar el formulario con los datos de la tarea
       } catch (error) {
@@ -40,16 +36,10 @@ const TaskEdit = () => {
   // Manejar la actualización de la tarea
   const handleOk = async (values) => {
     try {
-      // Construimos la URL dinámica para actualizar la tarea
       const putTaskUrl = `${baseUrl}/${currentTask._id}`;
       await axios.put(putTaskUrl, values);
       message.success("Tarea actualizada correctamente");
       setIsModalVisible(false);
-      // Actualizar la lista de tareas localmente si es necesario
-      const updatedTasks = tasks.map(task =>
-        task._id === currentTask._id ? { ...task, ...values } : task
-      );
-      setTasks(updatedTasks);
     } catch (error) {
       message.error("Error al actualizar la tarea");
     }
@@ -73,7 +63,13 @@ const TaskEdit = () => {
     <div className="App-Card-Container">
       <div className="App-Card-Register">
         {/* Pasar los datos de la tarea y la función onFinishEdit */}
-        <EditTask onFinishEdit={onFinishEdit} task={currentTask} />
+        {currentTask && (
+          <EditTask 
+            onFinishEdit={onFinishEdit} 
+            task={currentTask} 
+            form={form} // Asegúrate de pasar el formulario para que pueda ser editado
+          />
+        )}
         <div className="App-Card-AdminButton">
           <AdminButton />
         </div>

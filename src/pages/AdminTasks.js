@@ -22,11 +22,12 @@ const AdminTasks = () => {
   const navigate = useNavigate();
 
 
+
   // Obtener todas las tareas
   useEffect(() => {
     axios.get(baseUrl)
       .then(response => {
-        setTasks(response.data);
+        setTasks(response.data.tasks);
         setLoading(false);
       })
       .catch(() => message.error("Error al cargar las tareas"));

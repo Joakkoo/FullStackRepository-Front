@@ -62,13 +62,6 @@
   text-align: center; /* Asegúrate de que el texto esté centrado */
   width: 100%; /* Asegúrate de que la tarjeta ocupe todo el ancho disponible */
 }
-
-.App-Card-Container {
-}
-
-.App-Card-Register {
-}
-
 .App-Card-Tasks {
   width: 70%; /* Ocupa el 65% del ancho de la página */
 }
